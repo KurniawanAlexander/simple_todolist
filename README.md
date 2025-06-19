@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -58,4 +58,191 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
+
+# Simple Todo List Application - Laravel
+
+Aplikasi Todo List sederhana yang dibuat dengan Laravel dan MySQL untuk memenuhi requirements take home test PT Bejana Investidata Globalindo (BIGIO).
+
+## Fitur
+
+✅ **Registrasi** - Username & Password  
+✅ **Login & Logout** - Session-based authentication  
+✅ **Tambah Tugas** - Menambah todo baru  
+✅ **Hapus Tugas** - Menghapus todo  
+✅ **Tandai Tugas** - Mark as completed/uncompleted  
+✅ **User Isolation** - Setiap user hanya bisa melihat todo miliknya sendiri  
+
+## Teknologi yang Digunakan
+
+- **Backend**: Laravel 12.0 (PHP 8.2)
+- **Frontend**: Blade Templates + Tailwind CSS + Font Awesome
+- **Database**: MySQL
+- **Authentication**: Session
+
+## Cara Instalasi
+
+### Prerequisites
+- PHP 8.2 atau lebih tinggi
+- Composer
+- MySQL
+- Git
+
+### Langkah-langkah Instalasi
+
+1. **Clone repository**
+```bash
+git clone <repository-url>
+cd todo-app-laravel
+```
+
+2. **Install dependencies**
+```bash
+composer install
+```
+
+3. **Setup environment**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4. **Konfigurasi database di file .env**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=simple_todolist
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
+
+5. **Buat database MySQL**
+```sql
+CREATE DATABASE simple_todolist;
+```
+
+6. **Jalankan migrasi**
+```bash
+php artisan migrate
+```
+
+7. **Jalankan server**
+```bash
+php artisan serve
+```
+
+8. **Akses aplikasi**
+Buka browser dan kunjungi: `http://localhost:8000`
+
+## Struktur Database
+
+### Tabel Users
+- `id` (Primary Key)
+- `username` (Unique)
+- `password` (Hashed)
+- `created_at`
+- `updated_at`
+
+### Tabel Todos
+- `id` (Primary Key)
+- `user_id` (Foreign Key ke users.id)
+- `title`
+- `completed` (Boolean)
+- `created_at`
+- `updated_at`
+
+## API Endpoints
+
+Aplikasi ini menggunakan web routes, bukan API routes:
+
+- `GET /` - Halaman login
+- `GET /register` - Halaman registrasi
+- `POST /login` - Proses login
+- `POST /register` - Proses registrasi
+- `POST /logout` - Logout
+- `GET /dashboard` - Dashboard todo (protected)
+- `POST /todos` - Tambah todo (protected)
+- `PUT /todos/{id}` - Update todo status (protected)
+- `DELETE /todos/{id}` - Hapus todo (protected)
+
+## Cara Penggunaan
+
+1. **Registrasi**: Buat akun baru dengan username dan password
+2. **Login**: Masuk dengan kredensial yang sudah dibuat
+3. **Tambah Todo**: Gunakan form di bagian atas dashboard
+4. **Mark Complete**: Klik checkbox di sebelah kiri todo
+5. **Hapus Todo**: Klik tombol trash di sebelah kanan todo
+6. **Logout**: Klik tombol logout di header
+
+## Fitur Keamanan
+
+- Password di-hash menggunakan bcrypt
+- Session-based authentication
+- CSRF protection pada semua form
+- User isolation (setiap user hanya bisa akses todo miliknya)
+- Input validation dan sanitization
+
+## Screenshots
+
+### Halaman Login
+- Design yang clean dan modern
+- Form validation
+- Responsive design
+
+### Halaman Registrasi
+- Simple form dengan username dan password
+- Error handling
+
+### Dashboard
+- Statistics cards (Total, Completed, Pending)
+- Add todo form
+- Todo list dengan checkbox dan delete button
+- User-friendly interface
+
+## Testing
+
+Untuk testing, Anda bisa:
+
+1. **Manual Testing**:
+   - Registrasi user baru
+   - Login/logout
+   - CRUD operations pada todos
+   - Test user isolation (buat 2 user, pastikan tidak bisa lihat todo user lain)
+
+2. **Browser Testing**:
+   - Test di berbagai browser
+   - Test responsive design
+
+## Deployment
+
+Untuk deployment ke production:
+
+1. Set `APP_ENV=production` di .env
+2. Set `APP_DEBUG=false`
+3. Generate app key yang baru
+4. Setup database production
+5. Jalankan `php artisan config:cache`
+6. Setup web server (Apache/Nginx)
+
+## Troubleshooting
+
+### Error: "Class not found"
+```bash
+composer dump-autoload
+```
+
+### Error: Database connection
+- Pastikan MySQL service berjalan
+- Check konfigurasi database di .env
+- Pastikan database sudah dibuat
+
+### Error: Permission denied
+```bash
+chmod -R 775 storage bootstrap/cache
+```
+
+## Author
+
+**Kurniawan Alexander**  
+Take Home Test - PT Bejana Investidata Globalindo (BIGIO)
