@@ -9,12 +9,6 @@ use App\Http\Controllers\TodoController;
 //Route::resource('todos', TodoController::class)->middleware('auth');
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
-
 // Authentication Routes
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

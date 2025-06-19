@@ -8,7 +8,6 @@ use App\Models\Todo;
 
 class TodoController extends Controller
 {
-    // Tampilkan daftar todo milik user yang login
     public function index()
     {
         $user = Auth::user();
@@ -22,7 +21,6 @@ class TodoController extends Controller
         return view('dashboard', compact('todos'));
     }
 
-    // Simpan todo baru
     public function store(Request $request)
     {
         $request->validate([
@@ -47,7 +45,6 @@ class TodoController extends Controller
         }
     }
 
-    // Update status selesai / belum
     public function update(Request $request, Todo $todo)
     {
         if ($todo->user_id !== Auth::user()->id) {
@@ -60,7 +57,6 @@ class TodoController extends Controller
         return redirect()->route('dashboard')->with('success', 'Todo berhasil diperbarui!');
     }
 
-    // Hapus todo
     public function destroy(Todo $todo)
     {
         if ($todo->user_id !== Auth::user()->id) {
