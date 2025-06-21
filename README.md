@@ -83,7 +83,7 @@ Aplikasi Todo List sederhana yang dibuat dengan Laravel dan MySQL untuk memenuhi
 ## Cara Instalasi
 
 ### Prerequisites
-- PHP 8.2 atau lebih tinggi
+- PHP 8.2 
 - Composer
 - MySQL
 - Git
@@ -183,7 +183,7 @@ Aplikasi ini menggunakan web routes, bukan API routes:
 - User isolation (setiap user hanya bisa akses todo miliknya)
 - Input validation dan sanitization
 
-## Screenshots
+<!-- ## Screenshots
 
 ### Halaman Login
 - Design yang clean dan modern
@@ -198,7 +198,7 @@ Aplikasi ini menggunakan web routes, bukan API routes:
 - Statistics cards (Total, Completed, Pending)
 - Add todo form
 - Todo list dengan checkbox dan delete button
-- User-friendly interface
+- User-friendly interface -->
 
 ## Testing
 
@@ -214,7 +214,7 @@ Untuk testing, Anda bisa:
    - Test di berbagai browser
    - Test responsive design
 
-## Deployment
+<!-- ## Deployment
 
 Untuk deployment ke production:
 
@@ -240,7 +240,7 @@ composer dump-autoload
 ### Error: Permission denied
 ```bash
 chmod -R 775 storage bootstrap/cache
-```
+``` -->
 
 ## Author
 
