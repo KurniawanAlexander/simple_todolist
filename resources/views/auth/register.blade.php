@@ -43,6 +43,18 @@
                 </div>
 
                 <div>
+                    <label for="fullname" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-user mr-2"></i>Fullname
+                    </label>
+                    <input type="text" id="fullname" name="fullname" value="{{ old('fullname') }}"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200"
+                        placeholder="Choose a fullname" required>
+                    @error('fullname')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="fas fa-lock mr-2"></i>Password
                     </label>

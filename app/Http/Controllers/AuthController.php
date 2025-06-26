@@ -29,12 +29,14 @@ class AuthController extends Controller
     {
         $request->validate([
             'username' => 'required|string|max:255|unique:users',
+            'fullname' => 'required|string|max:255',
             'password' => 'required|string|min:6',
         ]);
 
         try {
             $user = User::create([
                 'username' => $request->username,
+                'fullname' => $request->fullname,
                 'password' => Hash::make($request->password),
             ]);
 
@@ -42,7 +44,7 @@ class AuthController extends Controller
 
             return redirect()->route('dashboard')->with('success', 'Registration successful!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Registration failed. Please try again.');
+            return back()->with('error', $e->getMessage());
         }
     }
 
@@ -50,6 +52,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'username' => 'required|string',
+            'fullname' => 'required|string',
             'password' => 'required|string',
         ]);
 

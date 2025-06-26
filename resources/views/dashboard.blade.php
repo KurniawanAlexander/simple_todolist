@@ -21,6 +21,10 @@
                     <h1 class="text-xl font-bold text-gray-800">Todo Dashboard</h1>
                     <p class="text-sm text-gray-600">Welcome, {{ auth()->user()->username }}!</p>
                 </div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Todo Dashboard</h1>
+                    <p class="text-sm text-gray-600">Welcome, {{ auth()->user()->fullname }}!</p>
+                </div>
             </div>
 
             <form method="POST" action="{{ route('logout') }}">
